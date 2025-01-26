@@ -17,7 +17,8 @@ builder.Services.AddApiVersioning(option =>
     //"api-version", "X-Version" and "ver" are parameter name to be set with version number in client before request the endpoints.
     option.ApiVersionReader = ApiVersionReader.Combine(
         new QueryStringApiVersionReader("api-version"),  //it will work for both URL Based & Query string based API Version
-        new HeaderApiVersionReader("X-Version")
+        new HeaderApiVersionReader("X-Version"),  //it's for Header based 
+        new MediaTypeApiVersionReader("ver")  // it's MediaType based
        ); 
 }).AddApiExplorer(options =>
 {
